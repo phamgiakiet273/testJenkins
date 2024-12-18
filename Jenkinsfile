@@ -15,15 +15,14 @@ pipeline {
           
         stage('Run Flask Application') {
             steps {
-                // Run Flask app in the background
-                sh 'nohup ${PYTHON_ENV} /home/ubuntu/jenkins_exercise/app.py &'
+                sh 'nohup ${PYTHON_ENV} app.py'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Run test cases
-                sh 'pytest /home/ubuntu/jenkins_exercise/tests/test_app.py --maxfail=5 --disable-warnings'
+                sh 'pytest test_app.py --maxfail=5 --disable-warnings'
             }
         }
     }
