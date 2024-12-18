@@ -12,17 +12,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/phamgiakiet273/testJenkins.git'
             }
         }
-      
-        stage('Install Dependencies') {
-            steps {
-                sh '''
-                python3 -m venv venv
-                source venv/bin/activate
-                pip install --upgrade pip
-                '''
-            }
-        }
-      
+          
         stage('Run Flask Application') {
             steps {
                 // Run Flask app in the background
