@@ -30,12 +30,16 @@ pipeline {
 
     post {
         success {
-            // Publish success status to GitHub
-            githubChecksPublish summary: 'Build Passed', detailsURL: "${BUILD_URL}"
+            // Ensure correct usage of githubChecksPublish
+            script {
+                githubChecksPublish name: 'Build Status', summary: 'Build Passed', detailsURL: "${BUILD_URL}"
+            }
         }
         failure {
-            // Publish failure status to GitHub
-            githubChecksPublish summary: 'Build Failed', detailsURL: "${BUILD_URL}"
+            // Ensure correct usage of githubChecksPublish
+            script {
+                githubChecksPublish name: 'Build Status', summary: 'Build Failed', detailsURL: "${BUILD_URL}"
+            }
         }
     }
 }
