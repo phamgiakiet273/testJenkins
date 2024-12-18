@@ -15,7 +15,7 @@ pipeline {
           
         stage('Run Flask Application') {
             steps {
-                sh 'nohup ${PYTHON_ENV} app.py'
+                sh 'nohup ${PYTHON_ENV} app.py &'
             }
         }
 
